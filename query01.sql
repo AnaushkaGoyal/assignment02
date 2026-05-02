@@ -1,11 +1,8 @@
--- Active: 1769627709257@@127.0.0.1@5432@Assignment_2_CloudComputing
 /*
   Which bus stop has the largest population within 800 meters? As a rough
   estimation, consider any block group that intersects the buffer as being part
   of the 800 meter buffer.
 */
--- set search_path = public;
-
 
 with
 
@@ -26,7 +23,6 @@ septa_bus_stop_surrounding_population as (
     inner join census.population_2020 as pop using (geoid)
     group by stops.stop_id
 )
-
 
 select
     stops.stop_id,

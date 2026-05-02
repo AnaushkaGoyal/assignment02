@@ -28,6 +28,7 @@ select
     stops.stop_id,
     stops.stop_name,
     pop.estimated_pop_800m::integer
+    pop.estimated_pop_800m
 from septa_bus_stop_surrounding_population as pop
 inner join septa.bus_stops as stops using (stop_id)
 order by pop.estimated_pop_800m desc

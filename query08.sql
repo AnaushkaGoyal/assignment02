@@ -23,4 +23,3 @@ select count(*) as count_block_groups
 from census.blockgroups_2020 as bg
 cross join penn_campus
 where st_intersects(bg.geog::geometry, penn_campus.geog);
-

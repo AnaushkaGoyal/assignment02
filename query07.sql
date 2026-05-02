@@ -20,14 +20,14 @@ select
     neighborhood_name,
     num_bus_stops_accessible::integer,
     num_bus_stops_inaccessible::integer,
-   round(
+    round(
         (
             num_bus_stops_accessible::numeric
             / (num_bus_stops_accessible + num_bus_stops_inaccessible)
         )
         * ln(1 + num_bus_stops_accessible + num_bus_stops_inaccessible)::numeric,
         2
-) as accessibility_metric
+    ) as accessibility_metric
 from neighborhood_stops
 order by accessibility_metric asc
 limit 5;

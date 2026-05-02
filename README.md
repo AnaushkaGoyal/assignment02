@@ -217,7 +217,7 @@ There are several datasets that are prescribed for you to use in this part. Belo
 
     Discuss your accessibility metric and how you arrived at it below:
 
-    **Description:**
+    **Description:** The accessibility metric I used is a weighted ratio that accounts for both the proportion of wheelchair-accessible bus stops in a neighborhood and the total number of stops available. The formula is: `(num_accessible / total_stops) * ln(1 + total_stops)`. A simple ratio alone would be misleading — a neighborhood with 1 accessible stop out of 1 total would score a perfect 1.0, despite offering very limited transit service. By multiplying the ratio by the natural log of total stops, neighborhoods with both a high accessibility proportion and a meaningful number of stops are rewarded. In GTFS, `wheelchair_boarding = 1` means the stop is accessible, while `0` (no info) and `2` (not possible) are treated as inaccessible. This metric prioritizes neighborhoods that offer both quality (high accessible ratio) and quantity (many stops) of wheelchair-accessible bus service.
 
 6.  What are the _top five_ neighborhoods according to your accessibility metric?
 
@@ -242,7 +242,7 @@ There are several datasets that are prescribed for you to use in this part. Belo
     )
     ```
 
-    **Discussion:**
+    **Discussion:** I used the PWD Stormwater Billing Parcels dataset to define Penn's main campus. I selected parcels where the `owner1` field contains 'UNIV OF PENN' or 'TRUSTEES OF THE UNIVERSITY OF PENNSYLVANIA', then took the spatial union (`ST_Union`) of all those parcel geometries to create a single campus boundary polygon. This approach leverages official property ownership records which provide an accurate, data-driven boundary for the university's land holdings rather than relying on manually drawn boundaries. The query then counts how many census block groups are fully contained (`ST_Covers`) within this unified campus boundary.
 
 9. With a query involving PWD parcels and census block groups, find the `geo_id` of the block group that contains Meyerson Hall. `ST_MakePoint()` and functions like that are not allowed.
 
